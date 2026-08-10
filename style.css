@@ -1,0 +1,92 @@
+       body { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        #map { height: 100vh; width: 100%; }
+        
+        /* Filter-menyn */
+        #filter-container {
+            position: absolute; top: 15px; right: 15px; z-index: 1000;
+            background: white; padding: 15px; border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); border-left: 5px solid #ff6600;
+        }
+
+        #year-filter { width: 100%; padding: 5px; margin-top: 5px; border-radius: 4px; border: 1px solid #ccc; cursor: pointer; }
+
+        /* Koordinatvisning för admin */
+        .admin-coord-display {
+            position: absolute; bottom: 25px; left: 20px;
+            background: rgba(255, 255, 255, 0.95); padding: 12px; z-index: 1000;
+            border: 2px solid #ff6600; border-radius: 8px; font-size: 13px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Popup styling */
+        .ol-popup { min-width: 280px; }
+        .ol-popup h3 { margin: 0 0 2px 0; color: #333; font-size: 18px; }
+        .ol-popup p.meta { margin: 0 0 12px 0; font-size: 12px; color: #666; border-bottom: 1px solid #eee; padding-bottom: 6px; }
+        
+        .btn-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+        .btn {
+            display: block; text-align: center; padding: 10px;
+            border-radius: 4px; text-decoration: none; color: white;
+            font-weight: bold; font-size: 13px; transition: background 0.2s;
+        }
+        .btn-pdf { background-color: #e74c3c; }
+        .btn-winsplits { background-color: #3498db; }
+        .btn-livelox { background-color: #2ecc71; }
+        .btn:hover { filter: brightness(90%); }
+
+        /* Styling för knappar utan länk (Inaktiverade element) */
+        .btn-disabled {
+            background-color: #bdc3c7 !important;
+            color: #7f8c8d !important;
+            cursor: not-allowed !important;
+            pointer-events: none !important; /* Blockerar alla musklick */
+            user-select: none !important; /* Hindrar texten från att markeras */
+            box-shadow: none !important;
+        }
+
+        .referat-box {
+            max-height: 200px; overflow-y: auto; background: #fdf6f2;
+            padding: 12px; border: 1px solid #f0e0d5; border-radius: 4px;
+            font-size: 13px; line-height: 1.5; color: #444; white-space: pre-wrap;
+        }
+
+        /* HUVUDKLASS FÖR DIV-IKON */
+        .ol-icon {
+            background: transparent !important;
+            border: none !important;
+            overflow: visible !important;
+        }
+
+        /* KVADRATISK ORIENTERINGSSKÄRM */
+        .ol-icon-inner {
+            width: 20px; height: 20px;
+            background: linear-gradient(135deg, #ffffff 50%, #ff6600 50%);
+            border: 1.5px solid #333; box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Årtalsetikett på ensamma kartikoner */
+        .ol-icon-year {
+            position: absolute;
+            top: 23px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border: 1px solid #333;
+            border-radius: 3px;
+            padding: 1px 4px;
+            font-size: 10px;
+            font-weight: bold;
+            color: #333;
+            white-space: nowrap;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.25);
+            z-index: 1000;
+        }
+
+        /* Anpassning av kluster-cirklar */
+        .marker-cluster-small, .marker-cluster-medium, .marker-cluster-large {
+            background-color: rgba(255, 102, 0, 0.6);
+        }
+        .marker-cluster-small div, .marker-cluster-medium div, .marker-cluster-large div {
+            background-color: rgba(255, 102, 0, 0.8);
+            color: white; font-weight: bold;
+        }
