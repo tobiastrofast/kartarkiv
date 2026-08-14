@@ -29,6 +29,9 @@
             border-radius: 4px; text-decoration: none; color: white;
             font-weight: bold; font-size: 13px; transition: background 0.2s;
         }
+        .btn-group a {
+            color: rgba(0,0,0,0.7);
+        }
         .btn-pdf { background-color: #e74c3c; }
         .btn-winsplits { background-color: #3498db; }
         .btn-livelox { background-color: #2ecc71; }
