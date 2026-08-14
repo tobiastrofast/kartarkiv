@@ -86,7 +86,7 @@
                                         <strong>${item.ar}</strong> | ${item.arrangor} | ${item.langd}m ${item.tid ? '| ' + item.tid : ''}
                                     </p>
                                     <div class="btn-group">
-                                        ${buttonsHtml || 'Inga länkar att visa'}
+                                        ${buttonsHtml || '<p>Inga länkar att visa</p>'}
                                     </div>
                                     <div class="referat-box">${item.referat}</div>
                                 </div>

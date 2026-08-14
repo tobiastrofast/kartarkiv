@@ -47,9 +47,14 @@
             box-shadow: none !important;
         }
 
-        .referat-box {
+        .referat-box, .btn-group p {
             max-height: 200px; overflow-y: auto; background: #fdf6f2;
             padding: 12px; border: 1px solid #f0e0d5; border-radius: 4px;
+            font-size: 13px; line-height: 1.5; color: #444; white-space: pre-wrap;
+        }
+        .btn-group p {
+            max-height: 200px; overflow-y: auto; background: #f8fdf2; margin: 0;
+            padding: 12px; border: 1px solid #e8f0d5; border-radius: 4px;
             font-size: 13px; line-height: 1.5; color: #444; white-space: pre-wrap;
         }
 
