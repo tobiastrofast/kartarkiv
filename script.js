@@ -28,15 +28,18 @@
         // Skottsäker funktion för att identifiera giltiga länkar
         function getButtonHtml(url, label, activeClass) {
             const cleanUrl = url ? String(url).trim() : "";
+
+            // Om ingen url angiven, returnera tom sträng så ingenting renderas
+            if (!cleanUrl) return "";
             
-            // Kontrollerar stenhårt om länken börjar med http eller https
+            // Kontrollerar om länken börjar med http eller https
             const hasValidUrl = cleanUrl.startsWith("http://") || cleanUrl.startsWith("https://");
 
             if (hasValidUrl) {
                 return `<a href="${cleanUrl}" target="_blank" class="btn ${activeClass}">${label}</a>`;
             } else {
-                // Returnerar en span-tagg UTAN href eller target. Denna kan INTE öppna flikar.
-                return `<span class="btn btn-disabled">${label} (saknas)</span>`;
+                // Ogiltig länk — returnera tomt så att inget visas
+                return "";
             }
         }
 
@@ -69,6 +72,13 @@
                         if (!isNaN(item.lat) && !isNaN(item.lng)) {
                             const marker = L.marker([item.lat, item.lng], { icon: createYearIcon(item.ar) });
                             
+                            // Bygg knapp-HTML endast för de länkar som finns
+                            const buttonsHtml = [
+                                getButtonHtml(item.pdf, 'Karta (PDF)', 'btn-pdf'),
+                                getButtonHtml(item.winsplits, 'Split Times', 'btn-winsplits'),
+                                getButtonHtml(item.livelox, 'Route', 'btn-livelox')
+                            ].filter(Boolean).join(' ');
+
                             const popupContent = `
                                 <div class="ol-popup">
                                     <h3>${item.namn}</h3>
@@ -76,9 +86,7 @@
                                         <strong>${item.ar}</strong> | ${item.arrangor} | ${item.langd}m ${item.tid ? '| ' + item.tid : ''}
                                     </p>
                                     <div class="btn-group">
-                                        ${getButtonHtml(item.pdf, 'Karta (PDF)', 'btn-pdf')}
-                                        ${getButtonHtml(item.winsplits, 'Split Times', 'btn-winsplits')}
-                                        ${getButtonHtml(item.livelox, 'Route', 'btn-livelox')}
+                                        ${buttonsHtml || 'Inga länkar att visa'}
                                     </div>
                                     <div class="referat-box">${item.referat}</div>
                                 </div>
